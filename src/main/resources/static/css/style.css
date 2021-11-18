@@ -1,0 +1,53 @@
+@charset "UTF-8";
+
+#wrap {
+	width:1200px;
+	height:900px;
+	margin:auto;
+}
+
+.content {
+	height:700px;
+}
+
+#logo-img {
+	width:300px;
+	height:300px;
+}
+
+.content-left-box {
+	height:600px;
+	width:500px;
+}
+
+.content-right-box {
+	height:600px;
+	width:500px;
+}
+
+.login-box {
+	width:400px;
+	height:420px;
+	border:1px solid #d2d2d2;
+}
+
+.login-small-box {
+	width:400px;
+	height:50px;
+	border:1px solid #d2d2d2;
+}
+
+.input-style {
+	width:250px;
+	
+}
+
+.btn-color {
+	color:white;
+	background-color:#06A2DB;
+}
+
+footer {
+	color:#d2d2d2;
+	height:80px;
+}
