@@ -17,4 +17,13 @@
  			,#{nickName}
  		)
  	</insert>
+ 	
+ 	<select id="selectCountById" parameterType="string" resultType="int">
+ 		SELECT
+ 			count(*)
+ 		FROM
+ 			`user`
+ 		WHERE
+ 			`loginId` = #{loginId}
+ 	</select>
  </mapper>
