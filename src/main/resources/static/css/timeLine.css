@@ -1,0 +1,10 @@
+@charset "UTF-8";
+
+.timeLine-box {
+	width:800px;
+}
+
+.fixed-box {
+	width:400px;
+	height:800px;
+}

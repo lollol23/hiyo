@@ -11,9 +11,29 @@ header {
 	height:80px;
 }
 
+.header-logo-box {
+	width:200px;
+	height:80px;
+}
+
+.header-serchbar-box {
+	width:700px;
+	height:80px;
+}
+
+.header-icon-box {
+	width:300px;
+	height:80px;
+}
+
 .btn-color {
 	color:white;
 	background-color:#06A2DB;
+}
+
+.bi {
+	font-size:38px;
+	color:white;
 }
 
 footer {
