@@ -26,4 +26,21 @@
  		WHERE
  			`loginId` = #{loginId}
  	</select>
+ 	<select id="selectByIdPassword" parameterType="map" resultType="com.lollol23.hiyo.user.model.User">
+ 		SELECT 
+ 			`id`
+ 			, `loginId`
+ 			, `password`
+ 			, `name`
+ 			, `nickname`
+ 			, `introduce`
+ 			, `profileImg`
+ 			, `createdAt`
+ 			, `updatedAt`
+ 		FROM
+ 			`user`
+ 		WHERE
+ 			`loginId` = #{loginId}
+ 			AND `password` = #{password}
+ 	</select>
  </mapper>

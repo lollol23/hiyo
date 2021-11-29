@@ -24,10 +24,10 @@
 							
 							<div class="">
 								<h1 class="text-center">Hiyo.</h1>
-								<form="loginForm">
-									<input type="text" class="form-control input-style mt-5" placeholder="아이디">
-									<input type="password" class="form-control input-style mt-2" placeholder="비밀번호">
-									<input type="submit" class="form-control btn-color mt-3" value="로그인">
+								<form id="signInForm">
+									<input type="text" name="loginId" id="loginIdInput" class="form-control input-style mt-5" placeholder="아이디">
+									<input type="password" name="password" id="passwordInput" class="form-control input-style mt-2" placeholder="비밀번호">
+									<input type="submit" class="btn btn-block btn-color mt-3" value="로그인">
 								</form>
 								<hr>
 								<div class="text-center">비밀번호를 잊으셨나요?</div>
@@ -43,5 +43,38 @@
 				© 2021 Hiyo from Meta
 			</footer>
 		</div>
+		<script>
+			$(document).ready(function() {
+				$("#signInForm").on("submit", function(e) {
+					e.preventDefault();
+					var loginId = $("#loginIdInput").val();
+					var password = $("#passwordInput").val();
+					if(loginId == "" || null) {
+						alert("아이디를 입력하세요.");
+						return;
+					}
+					if(password == "" || null) {
+						alert("비밀번호를 입력하세요.");
+						return;
+					}
+					
+					$.ajax({
+							type:"post",
+							url:"/user/sign_in",
+							data:{"loginId":loginId, "password":password},
+							success:function(data) {
+								if(data.result == "success") {
+									location.href="/post/timeline_view";
+								} else {
+									alert("아이디 비밀번호를 확인하세요.");
+								}
+							}
+							, error:function(e) {
+								alert("error");
+							}
+					});
+				});
+			});
+		</script>
 	</body>
 </html>

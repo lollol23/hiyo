@@ -3,6 +3,8 @@ package com.lollol23.hiyo.user.DAO;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
 
+import com.lollol23.hiyo.user.model.User;
+
 @Repository
 public interface UserDAO {
 	public int insertUser(
@@ -13,4 +15,8 @@ public interface UserDAO {
 			);
 	
 	public int selectCountById(@Param("loginId") String loginId);
+	public User selectByIdPassword(
+			@Param("loginId") String loginId
+			,@Param("password") String password
+			);
 }

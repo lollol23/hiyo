@@ -5,6 +5,7 @@ import org.springframework.stereotype.Service;
 
 import com.lollol23.hiyo.common.EncryptUtils;
 import com.lollol23.hiyo.user.DAO.UserDAO;
+import com.lollol23.hiyo.user.model.User;
 
 @Service
 public class UserBO {
@@ -23,5 +24,10 @@ public class UserBO {
 		} else {
 			return true;
 		}
+	}
+	
+	public User signIn(String loginId, String password) {
+		String encryptPassword = EncryptUtils.md5(password);
+		return userDAO.selectByIdPassword(loginId, encryptPassword);
 	}
 }
