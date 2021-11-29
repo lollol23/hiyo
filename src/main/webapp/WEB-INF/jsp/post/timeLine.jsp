@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 	<head>
@@ -25,11 +26,19 @@
 					<input type="text" class="form-control">
 				</div>
 				<div class="header-icon-box d-flex justify-content-end align-items-center">
-					<div>
+					<c:if test="${not empty userName }">
+						<div class="mr-4 text-white">
+							${userName }님
+						</div>	
+					</c:if>
+					<div class="mr-3">
+						<a href="/post/timeline_view"><i class="bi bi-house"></i></a>
+					</div>
+					<div class="mr-3">
 						<a href="#"><i class="bi bi-person"></i></a>
 					</div>
-					<div class="ml-3 mr-3">
-						<a href="#"><i class="bi bi-box-arrow-in-right"></i></a>
+					<div class="mr-3">
+						<a href="/user/sign_out"><i class="bi bi-box-arrow-in-right"></i></a>
 					</div>
 				</div>
 			</header>

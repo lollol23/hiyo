@@ -64,11 +64,11 @@ public class UserRestController {
 			result.put("result", "success");
 			HttpSession session = request.getSession();
 			session.setAttribute("userId", user.getId());
-			session.setAttribute("loginId", user.getLoginId());
-			session.setAttribute("password", user.getPassword());
+			session.setAttribute("userLoginId", user.getLoginId());
+			session.setAttribute("userName", user.getName());
 		} else {
 			result.put("result", "fail");
 		}
 		return result;
-	}
+	} 
 }

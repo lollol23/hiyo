@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class PostController {
 	
 	@GetMapping("/timeline_view")
-	public String timeLine(HttpServletRequest request) {
+	public String timeLine() {
 		return "/post/timeLine";
 	}
 }
