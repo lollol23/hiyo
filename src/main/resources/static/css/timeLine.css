@@ -1,10 +1,42 @@
 @charset "UTF-8";
 
+.timeline-section {
+	padding-top:80px;
+}
 .timeLine-box {
 	width:800px;
 }
 
 .fixed-box {
 	width:400px;
-	height:800px;
+	height:600px;
+}
+
+.create-div {
+	width:80px;
+	height:80px;
+	border-radius:40px;
+	background-color:#06A2DB;
+	position: fixed;
+	right: 10px;
+	bottom: 10px;
+}
+
+#create-post-box {
+	width:790px;
+	height:600px;
+	border:1px solid #d2d2d2;
+}
+
+#preview-img-box {
+	width:700px;
+	height:300px;
+}
+
+.create-box-in-box2 {
+	width:700px;
+}
+
+.create-box-in-box3 {
+	width:700px;
 }

@@ -12,7 +12,7 @@
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
 		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>		
 		<link rel="stylesheet" href="/static/css/_common.css" type="text/css">
-		
+		<link rel="stylesheet" href="/static/css/timeLine.css" type="text/css">
 		</head>
 	<body>
 		<div id="wrap" class="">
@@ -31,21 +31,57 @@
 							${userName }님
 						</div>	
 					</c:if>
-					<div class="mr-3">
-						<a href="/post/timeline_view"><i class="bi bi-house"></i></a>
+					<div class="mr-4">
+						<a href="/post/timeline_view"><i class="bi bi-house header-icons"></i></a>
 					</div>
 					<div class="mr-3">
-						<a href="#"><i class="bi bi-person"></i></a>
+						<a href="#"><i class="bi bi-person header-icons"></i></a>
 					</div>
 					<div class="mr-3">
-						<a href="/user/sign_out"><i class="bi bi-box-arrow-in-right"></i></a>
+						<a href="/user/sign_out"><i class="bi bi-box-arrow-in-right header-icons"></i></a>
 					</div>
 				</div>
 			</header>
-			<section class="d-flex">
-				<article class="timeLine-box"></article>
-				<article class="fixed-box"></article>
+			<section class="d-flex timeline-section">
+				<article class="timeLine-box d-flex justify-content-center">
+					<div id="create-post-box" class="d-none mt-2">
+						<div class="create-box-in-box d-flex justify-content-center mt-1">
+							<div id="preview-img-box" class="bg-primary justify-content-center"></div>
+						</div>
+						<div class="d-flex justify-content-center mt-1">
+							<div class="create-box-in-box2">	
+								<label>이미지경로</label>
+								<div class="d-flex">
+								<button class="btn"><i class="bi bi-card-image"></i></button>
+								<input type="text" class="form-control">
+								</div>
+								<label>내용</label><textarea class="form-control" rows="5"></textarea>
+								<div class="float-right">
+									<button type="button" class="btn btn-color mt-2 justify-content-end" id="writeBtn">글쓰기</button>
+								</div>
+							</div>
+						</div>
+					</div>
+				</article>
+				<article class="fixed-box bg-primary"></article>
+				<button type="button" class=" btn create-div d-flex align-items-center justify-content-center" id="createPostBtn">
+					<i class="bi bi-pencil-square header-icons"></i>
+				</button>
 			</section>
 		</div>
+		<script>
+			$(document).ready(function(){
+				var visibleBox = false;
+				$("#createPostBtn").on("click", function(e) {
+					var visibleBox = true;
+					if(visibleBox) {
+						$("#create-post-box").removeClass("d-none");
+						return;
+					} else {
+						return;
+					}
+				});
+			});
+		</script>
 	</body>
 </html>
