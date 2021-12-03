@@ -50,14 +50,16 @@
 						</div>
 						<div class="d-flex justify-content-center mt-1">
 							<div class="create-box-in-box2">	
-								<label>이미지경로</label>
 								<div class="d-flex">
-								<button class="btn"><i class="bi bi-card-image"></i></button>
-								<input type="text" class="form-control">
+									<div class="mr-2">									
+										<label>이미지경로</label>
+									</div>
+									<a href="#" id="imageUploadBtn"><i class="bi bi-card-image"></i></a>
+									<input type="file" id="fileInput" class="d-none">
 								</div>
-								<label>내용</label><textarea class="form-control" rows="5"></textarea>
+								<label>내용</label><textarea class="form-control" rows="5" id="contentInput"></textarea>
 								<div class="float-right">
-									<button type="button" class="btn btn-color mt-2 justify-content-end" id="writeBtn">글쓰기</button>
+									<button type="button" class="btn btn-color mt-2 justify-content-end" id="uploadBtn">업로드</button>
 								</div>
 							</div>
 						</div>
@@ -79,6 +81,20 @@
 						return;
 					} else {
 						return;
+					}
+				});
+				$("#imageUploadBtn").on("click", function() {
+					$("#fileInput").click();
+				});
+				$("#uploadBtn").on("click", function() {
+					var content = $("#contentInput").val().trim();
+					if(content == null || content == "") {
+						alert("내용을 입력하세요");
+						return ;
+					}
+					if($("#fileInput")[0].files.length == 0) {
+						alert("파일을 추가하세요");
+						return ;
 					}
 				});
 			});
