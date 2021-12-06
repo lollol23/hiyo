@@ -6,7 +6,14 @@
 .timeLine-box {
 	width:800px;
 }
-
+.timeline-post-box {
+	width:790px;
+	height:700px;
+	border:1px solid #d2d2d2;
+}
+.post-name-box {
+	height:50px;
+}
 .fixed-box {
 	width:400px;
 	height:600px;
@@ -33,7 +40,32 @@
 	height:300px;
 	background-color:#d2d2d2;
 }
-
+.img-box {
+	width:790px;
+	height:300px;
+}
+.like-box {
+	 height:50px;
+}
+.bi-heart {
+	font-size:28px;
+}
+.comment-box {
+	height:200px;
+}
+.comment-input-box {
+	height:50px;
+}
+.comment-input {
+	height:50px;
+}
+.content-box {
+	height:50px;
+}
+.content-box-userName {
+	width:60px;
+	weight:bold;
+}
 .create-box-in-box2 {
 	width:700px;
 }

@@ -43,7 +43,7 @@
 				</div>
 			</header>
 			<section class="d-flex timeline-section">
-				<article class="timeLine-box d-flex justify-content-center">
+				<article class="timeLine-box">
 					<div id="create-post-box" class="d-none mt-2">
 						<div class="create-box-in-box d-flex justify-content-center mt-1">
 							<div id="preview-img-box" class="justify-content-center">
@@ -64,6 +64,34 @@
 									<button type="button" class="btn btn-color mt-2 justify-content-end" id="uploadBtn">업로드</button>
 								</div>
 							</div>
+						</div>
+					</div>
+					<div class="timeline-post-box mt-4">
+						<div class="post-name-box">
+							<div class="pl-3 pt-3 font-weight-bold">
+								test용
+							</div>
+						</div>
+						<div class="">
+							<div id="img-box" class="">
+								<img src="/static/img/testImg1.jpg" id="image" width="789" height="300">
+							</div>
+						</div>
+						<div class="like-box">
+								<div class="pl-3 pt-2">
+									<i class="bi bi-heart"></i>
+								</div>
+						</div>
+						<div class="content-box d-flex pl-3">
+							<div class="content-box-userName font-weight-bold">test99</div>
+							<div class="content-box-contents">안녕안녕</div>
+						</div>
+						<div class="comment-box">
+						
+						</div>
+						<div class="comment-input-box d-flex">
+							<input type="text" class="form-control comment-input" placeholder="댓글작성...">
+							<button class="btn">게시</button>
 						</div>
 					</div>
 				</article>
@@ -91,11 +119,8 @@
 				$("#fileInput").on("change", function() {
 					var reader = new FileReader();
 					reader.onload = function (e) {
-				        // get loaded data and render thumbnail.
 				        document.getElementById("previewImg").src = e.target.result;
 				    };
-
-				    // read the image file as a data URL.
 				    reader.readAsDataURL(this.files[0]);
 				});
 				$("#uploadBtn").on("click", function() {
