@@ -96,6 +96,27 @@
 						alert("파일을 추가하세요");
 						return ;
 					}
+					var formData = new FormData();
+					formData.append("file", $("#fileInput")[0].files[0]);
+					formData.append("content", content);
+					
+					$.ajax({
+							encType:'multipart/form-data',
+							type:"post",
+							url:"/post/create",
+							processData:false,
+							contentType:false,
+							data:formData,
+							success:function(data) {
+								if(data.result == "success") {
+									location.reload();
+								} else {
+									alert("글쓰기실패~");
+								}
+							}, error:function(e) {
+								alert("error");
+							}
+					});
 				});
 			});
 		</script>
