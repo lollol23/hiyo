@@ -46,7 +46,9 @@
 				<article class="timeLine-box d-flex justify-content-center">
 					<div id="create-post-box" class="d-none mt-2">
 						<div class="create-box-in-box d-flex justify-content-center mt-1">
-							<div id="preview-img-box" class="bg-primary justify-content-center"></div>
+							<div id="preview-img-box" class="justify-content-center">
+								<img src="" id="previewImg" width="700" height="300">
+							</div>
 						</div>
 						<div class="d-flex justify-content-center mt-1">
 							<div class="create-box-in-box2">	
@@ -86,6 +88,16 @@
 				$("#imageUploadBtn").on("click", function() {
 					$("#fileInput").click();
 				});
+				$("#fileInput").on("change", function() {
+					var reader = new FileReader();
+					reader.onload = function (e) {
+				        // get loaded data and render thumbnail.
+				        document.getElementById("previewImg").src = e.target.result;
+				    };
+
+				    // read the image file as a data URL.
+				    reader.readAsDataURL(this.files[0]);
+				});
 				$("#uploadBtn").on("click", function() {
 					var content = $("#contentInput").val().trim();
 					if(content == null || content == "") {
@@ -118,6 +130,7 @@
 							}
 					});
 				});
+				
 			});
 		</script>
 	</body>
