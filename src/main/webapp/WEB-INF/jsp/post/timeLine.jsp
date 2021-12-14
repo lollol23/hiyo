@@ -44,6 +44,7 @@
 			</header>
 			<section class="d-flex timeline-section">
 				<article class="timeLine-box">
+					<!-- 글쓰기상자 -->
 					<div id="create-post-box" class="d-none mt-2">
 						<div class="create-box-in-box d-flex justify-content-center mt-1">
 							<div id="preview-img-box" class="justify-content-center">
@@ -66,6 +67,7 @@
 							</div>
 						</div>
 					</div>
+					<!-- 타임라인 리스트 -->
 					<div class="timeline-post-box mt-4">
 						<div class="post-name-box">
 							<div class="pl-3 pt-3 font-weight-bold">
@@ -89,13 +91,15 @@
 						<div class="comment-box">
 						
 						</div>
-						<div class="comment-input-box d-flex">
-							<input type="text" class="form-control comment-input" placeholder="댓글작성...">
-							<button class="btn">게시</button>
+						<!-- 댓글입력 -->
+						<div class="comment-input-box d-flex">				
+							<input type="text" class="form-control comment-input" id="inputComment" placeholder="댓글작성...">
+							<button class="btn" id="uploadCommentBtn">게시</button>
 						</div>
 					</div>
 				</article>
 				<article class="fixed-box bg-primary"></article>
+				<!-- 오른쪽아래 글쓰기 버튼 -->
 				<button type="button" class=" btn create-div d-flex align-items-center justify-content-center" id="createPostBtn">
 					<i class="bi bi-pencil-square header-icons"></i>
 				</button>
@@ -155,7 +159,29 @@
 							}
 					});
 				});
-				
+				$("#uploadCommentBtn").on("click", function() {
+					var comment = $("#inputComment").val();
+					if(comment == null || comment == "") {
+						alert("댓글을 입력하세요.");
+						return;
+					}
+					
+					$.ajax({
+							type:"post",
+							url:"/post/comment/create",
+							data:{"comment":comment},
+							success:function(data) {
+								if(data.result == "success") {
+									location.reload();
+								} else {
+									alert("댓글작성실패");
+								}
+							},
+							error:function(e) {
+								alert("error");
+							}
+					});
+				});	
 			});
 		</script>
 	</body>

@@ -21,4 +21,38 @@
  			,now()
  		)
  	</insert>
+ 	
+ 	<select id="selectPost" parameterType="int" resultType="com.lollol23.hiyo.post.model.Post">
+ 		SELECT
+ 			`id`
+ 			, `userId`
+ 			, `userName`
+ 			, `content`
+ 			, `imagePath`
+ 			, `createdAt`
+ 			, `updatedAt`
+ 		FROM
+ 			`id`= #{id}
+ 	</select>
+ 	
+ 	<select id="selectPostList" parameterType="int" resultType="com.lollol23.hiyo.post.model.Post">
+ 		SELECT
+ 			`id`
+ 			, `userId`
+ 			, `userName`
+ 			, `content`
+ 			, `imagePath`
+ 			, `createdAt`
+ 			, `updatedAt`
+ 		FROM
+ 			`id`= #{id}
+ 		ORDER BY `id` DESC
+ 	</select>
+ 	
+ 	<delete id="deletePost" parameterType="map">
+ 		DELETE FROM `post`
+ 		WHERE
+ 			`id` = #{id}
+ 			AND `userId` = #{userId}	
+ 	</delete>
  </mapper>
