@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.lollol23.hiyo.post.comment.BO.CommentBO;
 
 @RestController
-@RequestMapping("/comment")
+@RequestMapping("/post/comment")
 public class CommentRestController {
 	@Autowired
 	private CommentBO commentBO;
@@ -30,6 +30,7 @@ public class CommentRestController {
 		Map<String, String> result = new HashMap<>();
 		int userId = (Integer)session.getAttribute("userId");
 		String userName = (String)session.getAttribute("userName");
+		
 		int count = commentBO.addComment(postId, userId, userName, content);
 		if(count == 1) {
 			result.put("result", "success");

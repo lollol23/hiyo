@@ -21,4 +21,20 @@
 			, now()	
 		)
  	</insert>
+ 	
+ 	<select id="selectCommentListByPostId" resultType="com.lollol23.hiyo.post.comment.model.Comment" parameterType="int">
+ 		SELECT 
+			`id`
+			, `postId`
+			, `userId`
+			, `userName`
+			, `content`
+			, `createdAt`
+			, `updatedAt`
+		FROM
+			`comment`
+		WHERE 
+			`postId` = #{postId }
+		ORDER BY `id` DESC
+ 	</select>
  </mapper>

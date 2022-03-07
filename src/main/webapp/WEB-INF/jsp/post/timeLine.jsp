@@ -68,35 +68,61 @@
 						</div>
 					</div>
 					<!-- 타임라인 리스트 -->
-					<div class="timeline-post-box mt-4">
+					<c:forEach var="postDetail" items="${postList }">
+						<div class="timeline-post-box mt-4">
 						<div class="post-name-box">
 							<div class="pl-3 pt-3 font-weight-bold">
-								test용
+								${postDetail.post.userName }
 							</div>
 						</div>
 						<div class="">
 							<div id="img-box" class="">
-								<img src="/static/img/testImg1.jpg" id="image" width="789" height="300">
+								<img src="${postDetail.post.imagePath }" id="image" width="789" height="300">
 							</div>
 						</div>
 						<div class="like-box">
 								<div class="pl-3 pt-2">
-									<i class="bi bi-heart"></i>
+									<c:choose>
+										<c:when test="${postDetail.isLike }">
+											<a href="#" class="likeBtn" data-post-id="${postDetail.post.id }" >
+												<i class="bi bi-heart-fill heart-icon text-danger"></i>
+											</a>
+										</c:when>
+										<c:otherwise>
+											<a href="#" class="likeBtn" data-post-id="${postDetail.post.id }" >
+												<i class="bi bi-heart heart-icon text-dark"></i>		
+											</a>
+										</c:otherwise>
+									</c:choose>
+							<span class="middle-size ml-1"> 좋아요 ${postDetail.likeCount }개 </span>
 								</div>
 						</div>
 						<div class="content-box d-flex pl-3">
-							<div class="content-box-userName font-weight-bold">test99</div>
-							<div class="content-box-contents">안녕안녕</div>
+							<div class="content-box-userName font-weight-bold middle-size">${postDetail.post.userName }</div>
+							<div class="content-box-contents middle-size">${postDetail.post.content }  ${postDetail.post.id }</div>
 						</div>
 						<div class="comment-box">
-						
+							<div class=" border-bottom m-3">
+								<!-- 댓글-->
+								<div  class="middle-size">
+									댓글
+								</div>
+							</div>
+							<div class="middle-size m-3">
+								<c:forEach var="comment" items="${postDetail.commentList }">
+									<div class="mt-1">
+										<b>${comment.userName }</b> ${comment.content }
+									</div>
+								</c:forEach>
+							</div>
 						</div>
 						<!-- 댓글입력 -->
 						<div class="comment-input-box d-flex">				
-							<input type="text" class="form-control comment-input" id="inputComment" placeholder="댓글작성...">
-							<button class="btn" id="uploadCommentBtn">게시</button>
+							<input type="text" class="form-control comment-input" id="commentInput-${postDetail.post.id }" placeholder="댓글작성...">
+							<button class="btn uploadCommentBtn" data-post-id="${postDetail.post.id }">게시</button>
 						</div>
 					</div>
+					</c:forEach>
 				</article>
 				<article class="fixed-box bg-primary"></article>
 				<!-- 오른쪽아래 글쓰기 버튼 -->
@@ -159,9 +185,11 @@
 							}
 					});
 				});
-				$("#uploadCommentBtn").on("click", function() {
-					var comment = $("#inputComment").val();
-					if(comment == null || comment == "") {
+				$(".uploadCommentBtn").on("click", function() {
+					var postId = $(this).data("post-id");
+					var content = $("#commentInput-" + postId).val();
+					
+					if(content == null || content == "") {
 						alert("댓글을 입력하세요.");
 						return;
 					}
@@ -169,7 +197,7 @@
 					$.ajax({
 							type:"post",
 							url:"/post/comment/create",
-							data:{"comment":comment},
+							data:{"postId":postId, "content":content},
 							success:function(data) {
 								if(data.result == "success") {
 									location.reload();
@@ -182,6 +210,29 @@
 							}
 					});
 				});	
+				$(".likeBtn").on("click", function(e) {
+					e.preventDefault();
+					
+					var postId = $(this).data("post-id");
+					
+					$.ajax({
+						type:"get",
+						url:"/post/like",
+						data:{"postId":postId},
+						success: function(data) {
+							
+							if(data.result == "success") {
+								location.reload();
+							} else {
+								alert("좋아요 실패");
+							}
+						},
+						error: function(e) {
+							alert("error");
+						}
+						
+					});
+				});
 			});
 		</script>
 	</body>

@@ -50,6 +50,9 @@
 .bi-heart {
 	font-size:28px;
 }
+.bi-heart-fill {
+	font-size:28px;
+}
 .comment-box {
 	height:200px;
 }
@@ -62,6 +65,11 @@
 .content-box {
 	height:50px;
 }
+
+.middle-size {
+	font-size:15px;
+}
+
 .content-box-userName {
 	width:60px;
 }

@@ -32,6 +32,8 @@
  			, `createdAt`
  			, `updatedAt`
  		FROM
+ 			`post`
+ 		WHERE
  			`id`= #{id}
  	</select>
  	
@@ -45,7 +47,7 @@
  			, `createdAt`
  			, `updatedAt`
  		FROM
- 			`id`= #{id}
+ 			`post`
  		ORDER BY `id` DESC
  	</select>
  	
