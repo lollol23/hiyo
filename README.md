@@ -16,15 +16,15 @@
 
 ### 👩‍🏫 포트폴리오 
 
-[포트폴리오](portfolio.pdf) 
+[포트폴리오](ortfolio.pdf) 
 
 
  ### 🛠 설계 🛠
   * UI 기획  
-    https://ovenapp.io/project/MEoDuSsYW8NUBUR7wH788CN5yck53bCz#IMbQe  
+    https://ovenapp.io/project/PvWUwr0AunB3UlEKkPX5MlOJWUqqsLyj#b5WPj  
 
   * 데이터 베이스, URL 설계  
-    https://docs.google.com/spreadsheets/d/1HUEipabdYj0QCdX1knke_diHbDzr5LrX-AHYamDCuzM/edit#gid=0  
+    https://docs.google.com/spreadsheets/d/1koxCOzC42HpKevLQ7qpPzZjjC91OhJmV4fLAFyMtQ44/edit#gid=0
 f
  ### ⛏ 주요기능 ⛏
  * 회원가입
