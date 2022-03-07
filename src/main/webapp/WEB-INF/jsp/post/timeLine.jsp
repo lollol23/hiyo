@@ -13,35 +13,10 @@
 		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>		
 		<link rel="stylesheet" href="/static/css/_common.css" type="text/css">
 		<link rel="stylesheet" href="/static/css/timeLine.css" type="text/css">
-		</head>
+	</head>
 	<body>
 		<div id="wrap" class="">
-			<header  class="d-flex">
-				<div class="header-logo-box d-flex justify-content-center align-items-center">
-					<div>
-						<img src="/static/img/headerLogo.png">
-					</div>
-				</div>
-				<div class="header-serchbar-box d-flex align-items-center">
-					<input type="text" class="form-control">
-				</div>
-				<div class="header-icon-box d-flex justify-content-end align-items-center">
-					<c:if test="${not empty userName }">
-						<div class="mr-4 text-white">
-							${userName }님
-						</div>	
-					</c:if>
-					<div class="mr-4">
-						<a href="/post/timeline_view"><i class="bi bi-house header-icons"></i></a>
-					</div>
-					<div class="mr-3">
-						<a href="#"><i class="bi bi-person header-icons"></i></a>
-					</div>
-					<div class="mr-3">
-						<a href="/user/sign_out"><i class="bi bi-box-arrow-in-right header-icons"></i></a>
-					</div>
-				</div>
-			</header>
+			<c:import url="/WEB-INF/jsp/include/header.jsp" />
 			<section class="d-flex timeline-section">
 				<article class="timeLine-box">
 					<!-- 글쓰기상자 -->
@@ -70,8 +45,9 @@
 					<!-- 타임라인 리스트 -->
 					<c:forEach var="postDetail" items="${postList }">
 						<div class="timeline-post-box mt-4">
-						<div class="post-name-box">
-							<div class="pl-3 pt-3 font-weight-bold">
+						<div class="post-name-box pl-3  mt-1 d-flex">
+							<div><img src="${userProfileImg }" id="previewImgUpdate"></div>
+							<div class="pl-3 font-weight-bold">
 								${postDetail.post.userName }
 							</div>
 						</div>
@@ -124,7 +100,11 @@
 					</div>
 					</c:forEach>
 				</article>
-				<article class="fixed-box bg-primary"></article>
+				<article class="fixed-box">
+					<div class="middle-size m-3 font-weight-bold">
+						<span>팔로우 목록</span>
+					</div>
+				</article>
 				<!-- 오른쪽아래 글쓰기 버튼 -->
 				<button type="button" class=" btn create-div d-flex align-items-center justify-content-center" id="createPostBtn">
 					<i class="bi bi-pencil-square header-icons"></i>

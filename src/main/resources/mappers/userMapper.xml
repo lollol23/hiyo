@@ -9,7 +9,7 @@
  			`loginId`
  			,`password`
  			,`name`
- 			,`nickName`	
+ 			,`nickName`
  		) VALUES (
  			#{loginId}
  			,#{password}
@@ -43,4 +43,35 @@
  			`loginId` = #{loginId}
  			AND `password` = #{password}
  	</select>
+ 	<select id="selectProfileImgById" parameterType="map" resultType="com.lollol23.hiyo.user.model.User">
+ 		SELECT 
+ 			`profileImg`
+
+ 		FROM
+ 			`user`
+ 		WHERE
+ 			`id` = #{id}
+ 	</select>
+ 	<update id="updateUserById" parameterType="map">
+ 		UPDATE
+ 			`user`
+ 		SET
+ 			`name` = #{name}
+ 			, `nickName` = #{nickName}
+ 			, `introduce` = #{introduce}
+ 			, `updatedAt` = now()
+ 		WHERE
+ 			`id` = #{id}
+ 	
+ 	</update>
+ 	<update id="updateUserProfileImgById" parameterType="map">
+ 		UPDATE
+ 			`user`
+ 		SET
+ 			`profileImg` = #{profileImg}
+ 			, `updatedAt` = now()
+ 		WHERE
+ 			`id` = #{id}
+ 	
+ 	</update>
  </mapper>

@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.lollol23.hiyo.user.BO.UserBO;
 import com.lollol23.hiyo.user.model.User;
@@ -66,9 +67,52 @@ public class UserRestController {
 			session.setAttribute("userId", user.getId());
 			session.setAttribute("userLoginId", user.getLoginId());
 			session.setAttribute("userName", user.getName());
+			session.setAttribute("userNickName", user.getNickname());
+			session.setAttribute("userProfileImg", user.getProfileImg());
 		} else {
 			result.put("result", "fail");
 		}
 		return result;
-	} 
+	}
+	
+	@PostMapping("/update")
+	public Map<String, String> updateProfile(
+			@RequestParam("userName") String userName
+			, @RequestParam("userNickName") String userNickName
+			, @RequestParam("introduce") String introduce
+			, HttpServletRequest request) {
+		
+		HttpSession session = request.getSession();
+		int id = (Integer)session.getAttribute("userId");
+		int count = userBO.updateUser(id, userName, userNickName, introduce);
+		Map<String, String> result = new HashMap<>();
+		
+		if(count == 1) {
+			result.put("result", "success");
+			session.setAttribute("userName", userName);
+			session.setAttribute("userNickName", userNickName);
+		} else {
+			result.put("result", "fail");
+		}
+		return result;
+	}
+	
+	@PostMapping("/update_profileImg")
+	public Map<String, String> updateProfileImg(
+			@RequestParam(value = "file") MultipartFile file
+			, HttpServletRequest request){
+		HttpSession session = request.getSession();
+		int id = (Integer)session.getAttribute("userId");
+		Map<String, String> result = new HashMap<>();
+		int count = userBO.updateProfileImg(id, file);
+		if(count == 1) {
+			result.put("result", "success");
+			User user = userBO.getProfileImgById(id);
+			session.setAttribute("userProfileImg", user.getProfileImg());
+		} else {
+			result.put("result", "fail");
+		}
+		return result;
+	}
+	
 }

@@ -30,4 +30,9 @@ public class UserController {
 		
 		return "redirect:/user/signin_view";
 	}
+	
+	@GetMapping("/updateprofile_view")
+	public String updateProfie(HttpServletRequest request) {
+		return "/user/updateProfile";
+	}
 }
