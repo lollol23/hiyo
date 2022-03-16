@@ -75,7 +75,7 @@
 						</div>
 						<div class="content-box d-flex pl-3">
 							<div class="content-box-userName font-weight-bold middle-size">${postDetail.post.userName }</div>
-							<div class="content-box-contents middle-size">${postDetail.post.content }  ${postDetail.post.id }</div>
+							<div class="content-box-contents middle-size">${postDetail.post.content }</div>
 						</div>
 						<div class="comment-box">
 							<div class=" border-bottom m-3">
