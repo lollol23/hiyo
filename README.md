@@ -14,11 +14,6 @@
  * 웹 서비스를 개발 경험을 쌓기 위해서 instragram를 복제한 프로젝트 개발
  * 기본적인 로그인 기반의 SNS 기능 
 
-### 👩‍🏫 포트폴리오 
-
-[포트폴리오](Portfolio.pdf) 
-
-
  ### 🛠 설계 🛠
   * UI 기획  
     https://ovenapp.io/project/PvWUwr0AunB3UlEKkPX5MlOJWUqqsLyj#b5WPj  
